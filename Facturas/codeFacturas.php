@@ -10,7 +10,7 @@ include("../Conexion/conexion.php");
 $id_factura = (isset($_POST['id_factura'])) ? $_POST['id_factura'] : "";
 $id_empleado = (isset($_POST['id_empleado'])) ? $_POST['id_empleado'] : "";
 $id_cliente = (isset($_POST['id_cliente'])) ? $_POST['id_cliente'] : "";
-$detalle = (isset($_POST['detalle'])) ? $_POST['detalle'] : "";
+$id_producto = (isset($_POST['id_producto'])) ? $_POST['id_producto'] : "";
 
 
 
@@ -28,8 +28,8 @@ switch ($accion) {
                 */
 
                 $insercionFacturas = $conn->prepare(
-                "INSERT INTO factura ( id_empleado, id_cliente, detalle) 
-                VALUES ('$id_empleado','$id_cliente','$detalle')"
+                "INSERT INTO factura ( id_empleado, id_cliente, id_producto) 
+                VALUES ('$id_empleado','$id_cliente','$id_producto')"
              );
 
 
@@ -85,6 +85,11 @@ $listaClientes = $consultaClientes->get_result();
 $consultaEmpleados = $conn->prepare("SELECT * FROM empleados");
 $consultaEmpleados->execute();
 $listaEmpleados = $consultaEmpleados->get_result();
+
+/* Consultamos todos los productos  */
+$consultaProductos = $conn->prepare("SELECT * FROM productos");
+$consultaProductos->execute();
+$listaProductos = $consultaProductos->get_result();
 
 //Al final de todas las consultas se cierra la conexion
 $conn->close();

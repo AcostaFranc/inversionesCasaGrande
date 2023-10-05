@@ -91,11 +91,33 @@
 
 
 
+                                <!-- INICIO SELECTOR PRODUCTOS -->
+
                                 <div class="form-group col-md-12">
-                                    <label for="detalle">Detalle</label>
-                                    <input type="text" class="form-control" require name="detalle" id="detalle" placeholder="Detalle de la factura" value="<?php echo $detalle ?>">
-                                    <br>
+
+                                    <label for="id_cliente">Productos</label>
+
+
+                                    <select name="id_producto" id="id_producto" class="form-control">
+
+                                        <?php
+
+                                        if ($listaProductos->num_rows > 0) {
+                                            foreach ($listaProductos as $producto) {
+                                                echo " <option value='' hidden > Seleccione el Producto</option> ";
+                                                echo " <option value='{$producto['id_producto']}'> {$producto['id_producto']} {$producto['Nombre_producto']} </option> ";
+                                            }
+                                        } else {
+
+                                            echo "<h2> No tenemos resultados de los productos </h2>";
+                                        }
+                                        ?>
+                                    </select>
+
+
                                 </div>
+
+                                <!-- FIN SELECTOR PRODUCTOS -->
 
 
 
@@ -142,7 +164,7 @@
                         <th scope="col">Fecha</th>
                         <th scope="col">Empleado</th>
                         <th scope="col">Cliente</th>
-                        <th scope="col">Detalle</th>
+                        <th scope="col">id_producto</th>
 
 
                         <th scope="col">Eliminar</th>
@@ -167,7 +189,7 @@
                                 <td> <?php echo $factura['fecha']       ?> </td>
                                 <td> <?php echo $factura['id_empleado'] ?> </td>
                                 <td> <?php echo $factura['id_cliente']  ?> </td>
-                                <td> <?php echo $factura['detalle']     ?> </td>
+                                <td> <?php echo $factura['id_producto']     ?> </td>
 
 
                                 <!-- Este Formulario se utiliza para editar los registros -->
