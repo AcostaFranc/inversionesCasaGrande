@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "empresa";
+$database = "inversiones_casagrande";
 
 
 // Crea la conexion
